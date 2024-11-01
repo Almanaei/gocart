@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Appointments</title>
+</head>
+<body>
+    <h1>Appointments</h1>
+    <a href="{{ url_for('add_appointment') }}">Add Appointment</a>
+    <ul>
+        {% for appointment in appointments %}
+        <li>{{ appointment.title }} - {{ appointment.start_time }} to {{ appointment.end_time }}
+            <form method="post" action="{{ url_for('delete_appointment', appointment_id=appointment.id) }}">
+                <input type="submit" value="Delete">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

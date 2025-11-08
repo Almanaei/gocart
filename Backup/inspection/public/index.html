@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير معاينة متطلبات واشتراطات الدفاع المدني</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            max-width: 120px;
+            margin: 0 auto;
+            display: block;
+        }
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .form-section {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .custom-checkbox .form-check-input {
+            width: 20px;
+            height: 20px;
+        }
+        .form-check-label {
+            margin-right: 10px;
+        }
+        .signature-pad {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            height: 150px;
+            margin-top: 10px;
+        }
+        .timestamp {
+            font-size: 0.8em;
+            color: #6c757d;
+        }
+        .photos-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .photo-box {
+            border: 1px dashed #ccc;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .photo-preview {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+        .btn-bilingual {
+            position: relative;
+        }
+        .btn-bilingual::after {
+            content: attr(data-en);
+            display: block;
+            font-size: 0.7em;
+            color: #6c757d;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4 mb-5">
+        <div class="header">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Kingdom of Bahrain</h4>
+                    <h4>Ministry of Interior</h4>
+                </div>
+                <div class="col-md-4">
+                    <img src="/api/placeholder/120/120" alt="Ministry Logo" class="logo">
+                </div>
+                <div class="col-md-4">
+                    <h4>مملكة البحرين</h4>
+                    <h4>وزارة الداخلية</h4>
+                </div>
+            </div>
+            <h2 class="mt-3">تقرير معاينة متطلبات واشتراطات الدفاع المدني</h2>
+            <h4>Civil Defense Requirements Preview Report</h4>
+        </div>
+
+        <div class="form-container">
+            <div class="form-section">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <h5>بيانات المنشأة / Establishment details</h5>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">اسم المنشأة / Name of the occupancy:</label>
+                            <input type="text" class="form-control" id="occupancyName">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">طبيعة إشغال المنشأة / Nature of Facility Occupancy:</label>
+                            <input type="text" class="form-control" id="facilityNature">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">رقم الملف / File No.:</label>
+                            <input type="text" class="form-control" id="fileNo">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">رقم الطلب / Reference No.:</label>
+                            <input type="text" class="form-control" id="referenceNo">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">نوع الخدمة / Service Type:</label>
+                            <input type="text" class="form-control" id="serviceType">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">تاريخ المعاينة / Preview Date:</label>
+                            <input type="date" class="form-control" id="previewDate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h5>العنوان / Address</h5>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <label class="form-label">محل/شقة / Shop/flat:</label>
+                            <input type="text" class="form-control" id="shopFlat">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <label class="form-label">مبنى / Building:</label>
+                            <input type="text" class="form-control" id="building">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="mb-3">
+                            <label class="form-label">طريق / Road:</label>
+                            <input type="text" class="form-control" id="road">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="mb-3">
+                            <label class="form-label">مجمع / Block:</label>
+                            <input type="text" class="form-control" id="block">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="mb-3">
+                            <label class="form-label">المنطقة / Area:</label>
+                            <input type="text" class="form-control" id="area">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h5>الاشتراطات / Requirements</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement1">
+                            <label class="form-check-label" for="requirement1">
+                                1. أبواب مقاومة للحريق مع ردادات / Fire rated door with closer
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement2">
+                            <label class="form-check-label" for="requirement2">
+                                2. أنظمة الإنذار من الحريق (التلقائي + اليدوي) / Fire alarm systems (Automatic + Manual)
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement3">
+                            <label class="form-check-label" for="requirement3">
+                                3. طفايات الحريق / بطانية الحريق / Fire extinguisher / Fire Blanket
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement4">
+                            <label class="form-check-label" for="requirement4">
+                                4. أنظمة الخراطيم المطاطية ذات البكرة / Fire Hose reel
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement5">
+                            <label class="form-check-label" for="requirement5">
+                                5. أنظمة مرشات المياه التلقائية لمكافحة الحريق / Fire suppression sprinkler system
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement6">
+                            <label class="form-check-label" for="requirement6">
+                                6. مصابيح الطوارئ و علامات المخارج / Emergency lights and exit signs
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement7">
+                            <label class="form-check-label" for="requirement7">
+                                7. مصعد ومفتاح رجل الإطفاء / Fireman lift and key
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement8">
+                            <label class="form-check-label" for="requirement8">
+                                8. تهوية (طبيعية او ميكانيكية) في السلالم / Natural or Mechanical Ventilation in the stair
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement9">
+                            <label class="form-check-label" for="requirement9">
+                                9. أنظمة شفط الدخان و ضغط/ دفع الهواء / Smoke extract / Air pressurization system and jet fans
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement10">
+                            <label class="form-check-label" for="requirement10">
+                                10. مصدر احتياطي للكهرباء (المولد الكهربائي) / Emergency power supply and ATS Panel
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement11">
+                            <label class="form-check-label" for="requirement11">
+                                11. اسطوانات الغاز و الانابيب النحاسية صندوق جيد التهوية / Gas cylinder's with copper and iron pipes with ventilated cabinet
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement12">
+                            <label class="form-check-label" for="requirement12">
+                                12. نظام المكافحة بالوسائط النظيفة / Clean agent system
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement13">
+                            <label class="form-check-label" for="requirement13">
+                                13. نظام الانبوب الجاف / الرطب / Dry riser / wet riser system
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement14">
+                            <label class="form-check-label" for="requirement14">
+                                14. نظام كاشف الغاز وقاطع الغاز / Gas detection system and gas cut off valve
+                            </label>
+                        </div>
+                        <div class="form-check custom-checkbox mb-3">
+                            <input class="form-check-input" type="checkbox" id="requirement15">
+                            <label class="form-check-label" for="requirement15">
+                                15. الكاميرات الأمنية مع تسجيل 120 يوم / Security Cameras
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h5>الملاحظات / Observations</h5>
+                <div class="mb-3">
+                    <div class="row mb-2">
+                        <div class="col-md-1 text-center">1</div>
+                        <div class="col-md-11">
+                            <input type="text" class="form-control" id="observation1">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-1 text-center">2</div>
+                        <div class="col-md-11">
+                            <input type="text" class="form-control" id="observation2">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-1 text-center">3</div>
+                        <div class="col-md-11">
+                            <input type="text" class="form-control" id="observation3">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-1 text-center">4</div>
+                        <div class="col-md-11">
+                            <input type="text" class="form-control" id="observation4">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-1 text-center">5</div>
+                        <div class="col-md-11">
+                            <input type="text" class="form-control" id="observation5">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-1 text-center">6</div>
+                        <div class="col-md-11">
+                            <input type="text" class="form-control" id="observation6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h5>نتيجة عملية المعاينة / Inspection Result</h5>
+                <div class="mb-3">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inspectionResult" id="resultCompliant" value="compliant">
+                        <label class="form-check-label" for="resultCompliant">استيفاء / Compliant</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inspectionResult" id="resultNonCompliant" value="nonCompliant">
+                        <label class="form-check-label" for="resultNonCompliant">عدم استيفاء / Non-Compliant</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">الوقت التقديري لتصحيح المخالفة / Estimated time to correct violation (days):</label>
+                    <input type="number" class="form-control" id="correctionDays" min="1" max="90">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h5>القائم على المعاينة / Inspector</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">الاسم / Name:</label>
+                            <input type="text" class="form-control" id="inspectorName">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">التوقيع / Signature:</label>
+                            <div class="signature-pad" id="inspectorSignature"></div>
+                            <button class="btn btn-sm btn-outline-secondary mt-2" id="clearInspectorSignature" data-en="Clear">مسح</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h5>تعليق ضابط التفتيش / Inspection Officer Comment</h5>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="reviewedAdminNotes">
+                                <label class="form-check-label" for="reviewedAdminNotes">
+                                    تم الاطلاع على الإجراءات و الملاحظات الإدارية
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">التاريخ / Date:</label>
+                            <input type="date" class="form-control" id="officerDate">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">التوقيع / Signature:</label>
+                            <div class="signature-pad" id="officerSignature"></div>
+                            <button class="btn btn-sm btn-outline-secondary mt-2" id="clearOfficerSignature" data-en="Clear">مسح</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h5>الصور / Photos</h5>
+                <div class="photos-container">
+                    <div class="photo-box" id="photoBox1">
+                        <input type="file" id="photoInput1" class="d-none" accept="image/*">
+                        <img id="photoPreview1" class="photo-preview" src="" alt="Photo preview">
+                        <button class="btn btn-primary upload-btn" data-target="1" data-en="Upload Photo">رفع صورة</button>
+                    </div>
+                    <div class="photo-box" id="photoBox2">
+                        <input type="file" id="photoInput2" class="d-none" accept="image/*">
+                        <img id="photoPreview2" class="photo-preview" src="" alt="Photo preview">
+                        <button class="btn btn-primary upload-btn" data-target="2" data-en="Upload Photo">رفع صورة</button>
+                    </div>
+                    <div class="photo-box" id="photoBox3">
+                        <input type="file" id="photoInput3" class="d-none" accept="image/*">
+                        <img id="photoPreview3" class="photo-preview" src="" alt="Photo preview">
+                        <button class="btn btn-primary upload-btn" data-target="3" data-en="Upload Photo">رفع صورة</button>
+                    </div>
+                    <div class="photo-box" id="photoBox4">
+                        <input type="file" id="photoInput4" class="d-none" accept="image/*">
+                        <img id="photoPreview4" class="photo-preview" src="" alt="Photo preview">
+                        <button class="btn btn-primary upload-btn" data-target="4" data-en="Upload Photo">رفع صورة</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary btn-bilingual" id="saveAsDraft" data-en="Save as Draft">حفظ كمسودة</button>
+                <button class="btn btn-success btn-bilingual" id="submitForm" data-en="Submit Form">تقديم النموذج</button>
+                <button class="btn btn-primary btn-bilingual" id="printForm" data-en="Print Form">طباعة النموذج</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Signature Pads
+            const inspectorCanvas = document.getElementById('inspectorSignature');
+            const inspectorSignaturePad = new SignaturePad(inspectorCanvas);
+            
+            const officerCanvas = document.getElementById('officerSignature');
+            const officerSignaturePad = new SignaturePad(officerCanvas);
+            
+            // Clear buttons for signatures
+            document.getElementById('clearInspectorSignature').addEventListener('click', function() {
+                inspectorSignaturePad.clear();
+            });
+            
+            document.getElementById('clearOfficerSignature').addEventListener('click', function() {
+                officerSignaturePad.clear();
+            });
+            
+            // Set today's date as default
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('previewDate').value = today;
+            document.getElementById('officerDate').value = today;
+            
+            // Photo upload functionality
+            const uploadBtns = document.querySelectorAll('.upload-btn');
+            uploadBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    document.getElementById(`photoInput${targetId}`).click();
+                });
+            });
+            
+            // Preview uploaded photos
+            const photoInputs = document.querySelectorAll('input[type="file"]');
+            photoInputs.forEach(input => {
+                input.addEventListener('change', function(e) {
+                    const targetId = this.id.replace('photoInput', '');
+                    const preview = document.getElementById(`photoPreview${targetId}`);
+                    const uploadBtn = document.querySelector(`.upload-btn[data-target="${targetId}"]`);
+                    
+                    if (this.files && this.files[0]) {
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(e) {
+                            preview.src = e.target.result;
+                            preview.style.display = 'block';
+                            uploadBtn.style.display = 'none';
+                        }
+                        
+                        reader.readAsDataURL(this.files[0]);
+                    }
+                });
+            });
+            
+            // Form submission
+            document.getElementById('submitForm').addEventListener('click', function() {
+                // Validate form
+                const occupancyName = document.getElementById('occupancyName').value;
+                if (!occupancyName) {
+                    alert('يرجى إدخال اسم المنشأة / Please enter the occupancy name');
+                    return;
+                }
+                
+                // Collect form data
+                const formData = {
+                    establishment: {
+                        name: document.getElementById('occupancyName').value,
+                        nature: document.getElementById('facilityNature').value,
+                        fileNo: document.getElementById('fileNo').value,
+                        referenceNo: document.getElementById('referenceNo').value,
+                        serviceType: document.getElementById('serviceType').value,
+                        previewDate: document.getElementById('previewDate').value
+                    },
+                    address: {
+                        shopFlat: document.getElementById('shopFlat').value,
+                        building: document.getElementById('building').value,
+                        road: document.getElementById('road').value,
+                        block: document.getElementById('block').value,
+                        area: document.getElementById('area').value
+                    },
+                    requirements: {
+                        req1: document.getElementById('requirement1').checked,
+                        req2: document.getElementById('requirement2').checked,
+                        req3: document.getElementById('requirement3').checked,
+                        req4: document.getElementById('requirement4').checked,
+                        req5: document.getElementById('requirement5').checked,
+                        req6: document.getElementById('requirement6').checked,
+                        req7: document.getElementById('requirement7').checked,
+                        req8: document.getElementById('requirement8').checked,
+                        req9: document.getElementById('requirement9').checked,
+                        req10: document.getElementById('requirement10').checked,
+                        req11: document.getElementById('requirement11').checked,
+                        req12: document.getElementById('requirement12').checked,
+                        req13: document.getElementById('requirement13').checked,
+                        req14: document.getElementById('requirement14').checked,
+                        req15: document.getElementById('requirement15').checked
+                    },
+                    observations: {
+                        obs1: document.getElementById('observation1').value,
+                        obs2: document.getElementById('observation2').value,
+                        obs3: document.getElementById('observation3').value,
+                        obs4: document.getElementById('observation4').value,
+                        obs5: document.getElementById('observation5').value,
+                        obs6: document.getElementById('observation6').value
+                    },
+                    result: {
+                        isCompliant: document.getElementById('resultCompliant').checked,
+                        correctionDays: document.getElementById('correctionDays').value
+                    },
+                    inspector: {
+                        name: document.getElementById('inspectorName').value,
+                        signature: inspectorSignaturePad.toDataURL()
+                    },
+                    officer: {
+                        reviewedAdminNotes: document.getElementById('reviewedAdminNotes').checked,
+                        date: document.getElementById('officerDate').value,
+                        signature: officerSignaturePad.toDataURL()
+                    },
+                    timestamp: new Date().toISOString()
+                };
+                
+                // In a real application, you would send this data to a server
+                console.log('Form data:', formData);
+                
+                // Demo submission success
+                alert('تم تقديم النموذج بنجاح! / Form submitted successfully!');
+                
+                // For demo purposes, store in localStorage
+                localStorage.setItem('civilDefenseForm', JSON.stringify(formData));
+            });
+            
+            // Save as draft
+            document.getElementById('saveAsDraft').addEventListener('click', function() {
+                const formData = {
+                    establishment: {
+                        name: document.getElementById('occupancyName').value,
+                        nature: document.getElementById('facilityNature').value,
+                        fileNo: document.getElementById('fileNo').value,
+                        referenceNo: document.getElementById('referenceNo').value,
+                        serviceType: document.getElementById('serviceType').value,
+                        previewDate: document.getElementById('previewDate').value
+                    },
+                    // Include other form sections as needed
+                    timestamp: new Date().toISOString(),
+                    isDraft: true
+                };
+                
+                localStorage.setItem('civilDefenseFormDraft', JSON.stringify(formData));
+                alert('تم حفظ النموذج كمسودة / Form saved as draft');
+            });
+            
+            // Print functionality
+            document.getElementById('printForm').addEventListener('click', function() {
+                window.print();
+            });
+            
+            // Check for saved draft
+            const savedDraft = localStorage.getItem('civilDefenseFormDraft');
+            if (savedDraft) {
+                const draftData = JSON.parse(savedDraft);
+                if (confirm('هل ترغب في استعادة المسودة المحفوظة؟ / Do you want to restore the saved draft?')) {
+                    // Restore draft data
+                    document.getElementById('occupancyName').value = draftData.establishment.name || '';
+                    document.getElementById('facilityNature').value = draftData.establishment.nature || '';
+                    document.getElementById('fileNo').value = draftData.establishment.fileNo || '';
+                    document.getElementById('referenceNo').value = draftData.establishment.referenceNo || '';
+                    document.getElementById('serviceType').value = draftData.establishment.serviceType || '';
+                    document.getElementById('previewDate').value = draftData.establishment.previewDate || today;
+                    // Restore other fields as needed
+                }
+            }
+        });
+    </script>
+</body>
+</html>

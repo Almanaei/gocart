@@ -1,0 +1,28 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# THE FOLLOWING RULES YOU HAVE TO FOLLOW:
+
+- After each prompt I send to you, you have to inspect the full "codebase" deeply and the comprehensive project structure, then provide your response based on your analysis.
+
+- Don't ever duplicated same directires, files or code if its already existed. Do a proper - full inspection before do that.
+
+- You should an "END" step of establishing - building the project first, before provide improvment suggestions.
+
+- Don't mix up backend files with frontend files, always separate them in a clear structure.
+
+- if You faced a lag or delay in processing, ask me to start a new chat.
+
+- If I start a new chat to continue the previous one, Always provide a full summary in your first response about the last conversation.
+
+- When you create markdown files, always create "docs" directory if its not exist then put the markdown files inside.
+
+- You have to create a main markdown file as a reference to you, with comprehensive project histroy, roadmap.
+
+- When you create a new file or directory, always make sure to maintain the connection between the server backend and frontend.
+
+- Make the necessary adjustment, modifications to keep the backend and frontend connection stable.
+

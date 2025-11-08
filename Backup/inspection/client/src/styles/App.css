@@ -1,0 +1,25 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
+  padding: 24px;
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Ant Design RTL fixes */
+.ant-menu-rtl .ant-menu-item .anticon {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+.ant-form-rtl .ant-form-item-label {
+  text-align: right;
+} 

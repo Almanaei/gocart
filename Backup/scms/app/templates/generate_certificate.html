@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Generate Certificate</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.client_name.label }}
+            {{ form.client_name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.achievement.label }}
+            {{ form.achievement(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.date.label }}
+            {{ form.date(class="form-control") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Generate Certificate</button>
+    </form>
+{% endblock %}

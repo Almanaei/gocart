@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Manual Database Backup</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.backup_type.label }}
+            {{ form.backup_type(class="form-control") }}
+        </div>
+        {{ form.submit(class="btn btn-primary mt-3") }}
+    </form>
+    <a href="{{ url_for('main.index') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}

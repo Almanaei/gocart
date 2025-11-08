@@ -1,0 +1,124 @@
+2024-09-07 09:09:36,066 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:100]
+2024-09-07 09:13:04,570 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:102]
+2024-09-07 09:13:51,937 INFO: Retrieved 0 bookings [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:78]
+2024-09-07 09:14:38,937 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:129]
+2024-09-07 09:15:34,473 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:129]
+2024-09-07 09:15:52,683 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:129]
+2024-09-07 09:16:39,992 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:129]
+2024-09-07 09:18:26,242 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:129]
+2024-09-07 09:18:27,395 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:129]
+2024-09-07 09:20:15,899 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:129]
+2024-09-07 09:20:21,568 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:129]
+2024-09-07 09:20:36,695 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:129]
+2024-09-07 09:21:37,763 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:128]
+2024-09-07 09:21:43,708 ERROR: Error in booking_trends: fromisoformat: argument must be str [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:465]
+2024-09-07 09:21:43,713 ERROR: Traceback (most recent call last):
+  File "C:\Users\Salem Almannai\Desktop\scms\app\routes.py", line 420, in booking_trends
+    all_bookings = Booking.query.all()
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2673, in all
+    return self._iter().all()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\sqlalchemy\engine\result.py", line 1769, in all
+    return self._allrows()
+           ^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\sqlalchemy\engine\result.py", line 548, in _allrows
+    rows = self._fetchall_impl()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\sqlalchemy\engine\result.py", line 1676, in _fetchall_impl
+    return self._real_result._fetchall_impl()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\sqlalchemy\engine\result.py", line 2270, in _fetchall_impl
+    return list(self.iterator)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\sqlalchemy\orm\loading.py", line 219, in chunks
+    fetch = cursor._raw_all_rows()
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\sqlalchemy\engine\result.py", line 541, in _raw_all_rows
+    return [make_row(row) for row in rows]
+            ^^^^^^^^^^^^^
+  File "lib\\sqlalchemy\\cyextension\\resultproxy.pyx", line 22, in sqlalchemy.cyextension.resultproxy.BaseRow.__init__
+  File "lib\\sqlalchemy\\cyextension\\resultproxy.pyx", line 79, in sqlalchemy.cyextension.resultproxy._apply_processors
+  File "lib\\sqlalchemy\\cyextension\\processors.pyx", line 40, in sqlalchemy.cyextension.processors.str_to_datetime
+TypeError: fromisoformat: argument must be str
+ [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:466]
+2024-09-07 09:21:46,039 INFO: Retrieved 0 bookings [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:78]
+2024-09-07 09:22:04,636 INFO: Retrieved 1 bookings [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:78]
+2024-09-07 09:22:04,640 ERROR: Error retrieving bookings: Could not build url for endpoint 'uploaded_file' with values ['filename']. Did you mean 'main.edit_user' instead? [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:81]
+2024-09-07 09:22:04,700 ERROR: Traceback (most recent call last):
+  File "C:\Users\Salem Almannai\Desktop\scms\app\routes.py", line 79, in view_bookings
+    return render_template('view_bookings.html', bookings=bookings)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Salem Almannai\Desktop\scms\templates\view_bookings.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Salem Almannai\Desktop\scms\templates\base.html", line 64, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salem Almannai\Desktop\scms\templates\view_bookings.html", line 30, in block 'content'
+    <a href="{{ url_for('uploaded_file', filename=booking['attachment_filename']) }}">View Attachment</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'uploaded_file' with values ['filename']. Did you mean 'main.edit_user' instead?
+ [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:82]
+2024-09-07 09:23:11,176 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:128]
+2024-09-07 09:23:16,625 INFO: Retrieved 1 bookings [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:78]
+2024-09-07 09:23:16,659 ERROR: Error retrieving bookings: Could not build url for endpoint 'main.uploaded_file' with values ['filename']. Did you mean 'main.login' instead? [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:81]
+2024-09-07 09:23:16,665 ERROR: Traceback (most recent call last):
+  File "C:\Users\Salem Almannai\Desktop\scms\app\routes.py", line 79, in view_bookings
+    return render_template('view_bookings.html', bookings=bookings)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Salem Almannai\Desktop\scms\templates\view_bookings.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Salem Almannai\Desktop\scms\templates\base.html", line 64, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salem Almannai\Desktop\scms\templates\view_bookings.html", line 32, in block 'content'
+    <a href="{{ url_for('main.uploaded_file', filename=booking['attachment_filename']) }}">View Attachment</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.uploaded_file' with values ['filename']. Did you mean 'main.login' instead?
+ [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:82]
+2024-09-07 09:26:24,604 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:128]
+2024-09-07 09:26:27,701 INFO: Attempting to retrieve bookings for user 3 [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:43]
+2024-09-07 09:26:27,701 INFO: Retrieved 1 bookings [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:56]
+2024-09-07 09:26:27,718 ERROR: Error retrieving bookings: Could not build url for endpoint 'main.uploaded_file' with values ['filename']. Did you mean 'main.login' instead? [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:59]
+2024-09-07 09:27:48,661 INFO: Application startup [in C:\Users\Salem Almannai\Desktop\scms\app\__init__.py:128]
+2024-09-07 09:27:51,656 INFO: Attempting to retrieve bookings for user 3 [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:43]
+2024-09-07 09:27:51,662 INFO: Retrieved 1 bookings [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:56]
+2024-09-07 09:27:51,686 ERROR: Error retrieving bookings: Could not build url for endpoint 'main.uploaded_file' with values ['filename']. Did you mean 'main.login' instead? [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:59]
+2024-09-07 09:27:53,277 INFO: Attempting to retrieve bookings for user 3 [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:43]
+2024-09-07 09:27:53,281 INFO: Retrieved 1 bookings [in C:\Users\Salem Almannai\Desktop\scms\app\routes.py:56]

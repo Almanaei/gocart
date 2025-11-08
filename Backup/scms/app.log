@@ -1,0 +1,134 @@
+2024-08-31 04:54:08,460 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:526]
+2024-08-31 04:54:10,283 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:526]
+2024-08-31 04:54:12,370 ERROR: An error occurred: 'csrf_token' is undefined [in C:\Users\Salem Almannai\Desktop\scms\app.py:447]
+2024-08-31 04:54:12,389 ERROR: Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask_caching\__init__.py", line 426, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask_caching\__init__.py", line 185, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salem Almannai\Desktop\scms\app.py", line 134, in index
+    return render_template('index.html', posts=posts, page=page, total_pages=total_pages)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Salem Almannai\Desktop\scms\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Salem Almannai\Desktop\scms\templates\base.html", line 10, in top-level template code
+    {{ csrf_token() }}
+  File "C:\Python312\Lib\site-packages\jinja2\utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+ [in C:\Users\Salem Almannai\Desktop\scms\app.py:448]
+2024-08-31 04:55:19,274 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:511]
+2024-08-31 04:55:27,881 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:511]
+2024-08-31 04:55:28,831 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:511]
+2024-08-31 04:55:30,326 ERROR: An error occurred: 'csrf_token' is undefined [in C:\Users\Salem Almannai\Desktop\scms\app.py:432]
+2024-08-31 04:55:30,348 ERROR: Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask_caching\__init__.py", line 426, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask_caching\__init__.py", line 185, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salem Almannai\Desktop\scms\app.py", line 131, in index
+    return render_template('index.html', posts=posts, page=page, total_pages=total_pages)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Salem Almannai\Desktop\scms\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Salem Almannai\Desktop\scms\templates\base.html", line 10, in top-level template code
+    {{ csrf_token() }}
+  File "C:\Python312\Lib\site-packages\jinja2\utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+ [in C:\Users\Salem Almannai\Desktop\scms\app.py:433]
+2024-08-31 04:56:36,828 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:495]
+2024-08-31 04:56:43,159 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:495]
+2024-08-31 04:56:44,257 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:495]
+2024-08-31 04:56:45,978 ERROR: An error occurred: 'csrf_token' is undefined [in C:\Users\Salem Almannai\Desktop\scms\app.py:416]
+2024-08-31 04:56:45,995 ERROR: Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask_caching\__init__.py", line 426, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask_caching\__init__.py", line 185, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salem Almannai\Desktop\scms\app.py", line 115, in index
+    return render_template('index.html', posts=posts, page=page, total_pages=total_pages)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Salem Almannai\Desktop\scms\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Salem Almannai\Desktop\scms\templates\base.html", line 10, in top-level template code
+    {{ csrf_token() }}
+  File "C:\Python312\Lib\site-packages\jinja2\utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+ [in C:\Users\Salem Almannai\Desktop\scms\app.py:417]
+2024-08-31 05:09:13,294 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:495]
+2024-08-31 05:09:14,273 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:495]
+2024-08-31 05:09:16,219 ERROR: An error occurred: 'csrf_token' is undefined [in C:\Users\Salem Almannai\Desktop\scms\app.py:416]
+2024-08-31 05:09:36,744 ERROR: An error occurred: 'csrf_token' is undefined [in C:\Users\Salem Almannai\Desktop\scms\app.py:416]
+2024-08-31 05:12:50,448 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:499]
+2024-08-31 05:12:52,054 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:499]
+2024-08-31 05:13:01,389 ERROR: An error occurred: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it. [in C:\Users\Salem Almannai\Desktop\scms\app.py:420]
+2024-08-31 05:14:22,839 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:499]
+2024-08-31 05:14:28,547 ERROR: An error occurred: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it. [in C:\Users\Salem Almannai\Desktop\scms\app.py:420]
+2024-08-31 05:43:03,322 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:501]
+2024-08-31 05:43:04,512 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:501]
+2024-08-31 05:43:15,039 ERROR: Unhandled Exception: 400 Bad Request: The CSRF token is missing. [in C:\Users\Salem Almannai\Desktop\scms\app.py:514]
+2024-08-31 05:44:31,885 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:501]
+2024-08-31 05:44:36,774 ERROR: Unhandled Exception: 400 Bad Request: The CSRF token is missing. [in C:\Users\Salem Almannai\Desktop\scms\app.py:514]
+2024-08-31 05:45:32,325 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:499]
+2024-08-31 05:45:35,599 WARNING: No user found with username: admin [in C:\Users\Salem Almannai\Desktop\scms\app.py:216]
+2024-08-31 05:45:35,627 ERROR: Unhandled Exception: 'csrf_token' is undefined [in C:\Users\Salem Almannai\Desktop\scms\app.py:512]
+2024-08-31 05:45:46,824 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:499]

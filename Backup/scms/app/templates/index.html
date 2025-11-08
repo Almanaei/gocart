@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Welcome to our website!</h1>
+    
+    <!-- Add this search form -->
+    <form action="{{ url_for('main.view_bookings') }}" method="GET" class="mb-4">        <div class="input-group">
+            <input type="text" name="query" class="form-control" placeholder="Search bookings...">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+    
+    <div class="row">
+        <!-- Key Metrics -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total Bookings</h5>
+                    <p class="card-text display-4">{{ total_bookings }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Recent Bookings (30 days)</h5>
+                    <p class="card-text display-4">{{ recent_bookings }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card bg-warning text-dark">
+                <div class="card-body">
+                    <h5 class="card-title">Pending Bookings</h5>
+                    <p class="card-text display-4">{{ pending_bookings }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total Certificates</h5>
+                    <p class="card-text display-4">{{ total_certificates }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Booking Status Distribution -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Booking Status Distribution</h5>
+                    <canvas id="statusChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Posts -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Recent Posts</h5>
+                    {% if recent_posts %}
+                        <ul class="list-group">
+                        {% for post in recent_posts %}
+                            <li class="list-group-item">
+                                <a href="{{ url_for('main.view_post', id=post.id) }}">{{ post.title }}</a>
+                                <small class="text-muted">{{ post.created.strftime('%Y-%m-%d') }}</small>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No recent posts.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Upcoming Bookings -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Upcoming Bookings</h5>
+                    <h2>Upcoming Bookings</h2>
+                    <ul>
+                    {% for booking in upcoming_bookings %}
+                        <li>
+                            {{ booking.client_name }} - 
+                            {% if booking.booking_date %}
+                                {% if booking.booking_date is string %}
+                                    {{ booking.booking_date }}
+                                {% else %}
+                                    {{ booking.booking_date.strftime('%Y-%m-%d') }}
+                                {% endif %}
+                            {% else %}
+                                No date set
+                            {% endif %}
+                            <span class="badge bg-{{ 'primary' if booking.status == 'pending' else 'success' if booking.status == 'approved' else 'danger' }}">{{ booking.status }}</span>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Quick Actions</h5>
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('main.create_booking') }}" class="btn btn-primary">Create New Booking</a>
+                        <a href="{{ url_for('main.view_bookings') }}" class="btn btn-secondary">View All Bookings</a>
+                        <a href="{{ url_for('main.booking_calendar') }}" class="btn btn-info">Booking Calendar</a>
+                        <a href="{{ url_for('main.view_posts') }}" class="btn btn-success">View All Posts</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Prepare data for the chart
+    var statusDistribution = JSON.parse('{{ status_distribution | tojson | safe }}');
+    var statusLabels = statusDistribution.map(function(item) { return item.status; });
+    var statusData = statusDistribution.map(function(item) { return item.count; });
+
+    // Define colors for each status
+    var statusColors = {
+        'pending': 'rgba(255, 206, 86, 0.8)',   // Yellow
+        'approved': 'rgba(75, 192, 192, 0.8)',  // Green
+        'cancelled': 'rgba(255, 99, 132, 0.8)', // Red
+        'completed': 'rgba(54, 162, 235, 0.8)'  // Blue
+    };
+
+    // Create an array of colors based on the status labels
+    var chartColors = statusLabels.map(function(status) {
+        return statusColors[status.toLowerCase()] || 'rgba(153, 102, 255, 0.8)'; // Default purple color if status not found
+    });
+
+    // Booking Status Distribution Chart
+    var ctx = document.getElementById('statusChart').getContext('2d');
+    var statusChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: statusLabels,
+            datasets: [{
+                data: statusData,
+                backgroundColor: chartColors
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Booking Status Distribution'
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

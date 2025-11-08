@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}Statistics{% endblock %}
+
+{% block head %}
+{{ super() }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Booking System Statistics</h1>
+
+    <div class="row">
+        <!-- KPIs -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Bookings</h5>
+                    <p class="card-text display-4">{{ total_bookings }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Monthly Bookings</h5>
+                    <p class="card-text display-4">{{ monthly_bookings }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Completion Rate</h5>
+                    <p class="card-text display-4">{{ completion_rate|round(2) }}%</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">New Users (30 days)</h5>
+                    <p class="card-text display-4">{{ new_users }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Booking Trends -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Bookings Over Time</h5>
+                    <canvas id="bookingTrendsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Distribution -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Booking Status Distribution</h5>
+                    <canvas id="statusDistributionChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Top Clients -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Top 5 Clients</h5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Client Name</th>
+                                <th>Bookings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for client in top_clients %}
+                            <tr>
+                                <td>{{ client.client_name }}</td>
+                                <td>{{ client.booking_count }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Booking Trends Chart
+    var ctxTrends = document.getElementById('bookingTrendsChart').getContext('2d');
+    new Chart(ctxTrends, {
+        type: 'line',
+        data: {
+            labels: JSON.parse('{{ daily_bookings|map(attribute="date")|list|tojson|safe }}'),
+            datasets: [{
+                label: 'Daily Bookings',
+                data: JSON.parse('{{ daily_bookings|map(attribute="count")|list|tojson|safe }}'),
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Status Distribution Chart
+    var ctxStatus = document.getElementById('statusDistributionChart').getContext('2d');
+    new Chart(ctxStatus, {
+        type: 'pie',
+        data: {
+            labels: JSON.parse('{{ status_distribution|map(attribute=0)|list|tojson|safe }}'),
+            datasets: [{
+                data: JSON.parse('{{ status_distribution|map(attribute=1)|list|tojson|safe }}'),
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ]
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
+{% endblock %}

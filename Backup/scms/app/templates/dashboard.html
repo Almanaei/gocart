@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Welcome, {{ current_user.username }}!</h1>
+    <p>This is your dashboard. Here you can see an overview of your activities and quick access to main features.</p>
+    <div class="dashboard-links">
+        <a href="{{ url_for('main.create') }}">
+            <i class="fas fa-plus-circle fa-2x"></i>
+            <span>Create New Post</span>
+        </a>
+        <a href="{{ url_for('main.create_booking') }}">
+            <i class="far fa-calendar-plus fa-2x"></i>
+            <span>Create New Booking</span>
+        </a>
+        <a href="{{ url_for('main.view_bookings') }}">
+            <i class="far fa-calendar-alt fa-2x"></i>
+            <span>View Your Bookings</span>
+        </a>
+        <!-- Comment out or remove these links until the routes are implemented
+        <a href="{{ url_for('main.booking_calendar') }}">
+            <i class="fas fa-calendar-week fa-2x"></i>
+            <span>Booking Calendar</span>
+        </a>
+        <a href="{{ url_for('main.generate_certificate') }}">
+            <i class="fas fa-certificate fa-2x"></i>
+            <span>Generate Certificate</span>
+        </a>
+        <a href="{{ url_for('main.certificate_history') }}">
+            <i class="fas fa-history fa-2x"></i>
+            <span>Certificate History</span>
+        </a>
+        -->
+    </div>
+{% endblock %}

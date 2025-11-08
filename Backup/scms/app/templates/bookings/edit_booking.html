@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Edit Booking</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.client_name.label(class="form-label") }}
+            {{ form.client_name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.mobile_number.label(class="form-label") }}
+            {{ form.mobile_number(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.booking_date.label(class="form-label") }}
+            {{ form.booking_date(class="form-control", type="date") }}
+        </div>
+        <div class="form-group">
+            {{ form.training_date.label(class="form-label") }}
+            {{ form.training_date(class="form-control", type="date") }}
+        </div>
+        <div class="form-group">
+            {{ form.status.label(class="form-label") }}
+            {{ form.status(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.organization_name.label(class="form-label") }}
+            {{ form.organization_name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.address.label(class="form-label") }}
+            {{ form.address(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.attachment.label(class="form-label") }}
+            {{ form.attachment(class="form-control-file") }}
+        </div>
+        {% if booking.attachment_filename %}
+            <p>Current attachment: 
+                <a href="{{ url_for('bookings.view_attachment', booking_id=booking.id) }}" target="_blank">
+                    {{ booking.attachment_filename }}
+                </a>
+            </p>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">Update Booking</button>
+    </form>
+</div>
+{% endblock %}

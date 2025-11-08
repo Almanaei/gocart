@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Edit Post{% endblock %}
+{% block content %}
+    <h1>Edit Post</h1>
+    <div class="card">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.title.label }}
+                {{ form.title(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.content.label }}
+                {{ form.content(class="form-control") }}
+            </div>
+            <button type="submit" class="btn">Update Post</button>
+        </form>
+    </div>
+{% endblock %}

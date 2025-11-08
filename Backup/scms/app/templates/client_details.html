@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Client Details: {{ client_name }}</h1>
+    <h2>Booking History</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Booking Date</th>
+                <th>Training Date</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Address</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking['booking_date'] }}</td>
+                    <td>{{ booking['training_date'] }}</td>
+                    <td>{{ booking['email'] }}</td>
+                    <td>{{ booking['mobile_number'] }}</td>
+                    <td>{{ booking['address'] }}</td>
+                    <td>{{ booking['status'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('main.view_bookings') }}">Back to Bookings</a>
+{% endblock %}

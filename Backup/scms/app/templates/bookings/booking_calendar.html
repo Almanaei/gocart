@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Booking Calendar{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+        #calendar {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Booking Calendar</h1>
+    <div id='calendar'></div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendarEvents = JSON.parse('{{ calendar_events | tojson | safe }}');
+            
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: calendarEvents,
+                eventClick: function(info) {
+                    if (info.event.url) {
+                        window.location.href = info.event.url;
+                        return false;
+                    }
+                },
+                eventDidMount: function(info) {
+                    info.el.title = info.event.title;
+                }
+            });
+            calendar.render();
+        });
+    </script>
+{% endblock %}

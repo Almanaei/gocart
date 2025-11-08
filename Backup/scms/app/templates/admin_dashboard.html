@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Admin Dashboard</h1>
+
+    <!-- Key Metrics -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total Bookings</h5>
+                    <p class="card-text display-4">{{ total_bookings }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Pending Bookings</h5>
+                    <p class="card-text display-4">{{ pending_bookings }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total Users</h5>
+                    <p class="card-text display-4">{{ total_users }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark">
+                <div class="card-body">
+                    <h5 class="card-title">Total Posts</h5>
+                    <p class="card-text display-4">{{ total_posts }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <h2 class="mb-3">Quick Actions</h2>
+    <div class="row mb-4">
+        <div class="col-md-3 mb-3">
+            <a href="{{ url_for('main.create_booking') }}" class="btn btn-primary btn-lg btn-block w-100">
+                <i class="fas fa-calendar-plus"></i> Create Booking
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a href="{{ url_for('main.view_bookings') }}" class="btn btn-success btn-lg btn-block w-100">
+                <i class="fas fa-list"></i> View Bookings
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a href="{{ url_for('main.create_user') }}" class="btn btn-info btn-lg btn-block w-100">
+                <i class="fas fa-user-plus"></i> Add User
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a href="{{ url_for('main.create_post') }}" class="btn btn-warning btn-lg btn-block w-100">
+                <i class="fas fa-pen"></i> Create Post
+            </a>
+        </div>
+    </div>
+
+    <!-- Additional Features -->
+    <h2 class="mb-3">Additional Features</h2>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <a href="{{ url_for('main.statistics') }}" class="btn btn-secondary btn-lg btn-block w-100">
+                <i class="fas fa-chart-bar"></i> View Statistics
+            </a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="{{ url_for('main.booking_trends') }}" class="btn btn-dark btn-lg btn-block w-100">
+                <i class="fas fa-chart-line"></i> Booking Trends
+            </a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="{{ url_for('main.system_logs') }}" class="btn btn-danger btn-lg btn-block w-100">
+                <i class="fas fa-file-alt"></i> System Logs
+            </a>
+        </div>
+    </div>
+
+    <!-- Manual Backup -->
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <a href="{{ url_for('main.manual_backup') }}" class="btn btn-primary btn-lg btn-block">
+                Generate Manual Backup
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Add Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<style>
+    .btn-lg {
+        padding: 15px 0;
+        font-size: 1.25rem;
+    }
+    .card {
+        transition: transform 0.3s;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+</style>
+{% endblock %}

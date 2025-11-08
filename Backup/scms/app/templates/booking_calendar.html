@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Booking Calendar{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    <style>
+        #calendar {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Booking Calendar</h1>
+        <div id='calendar'></div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendarEvents = JSON.parse('{{ calendar_events | tojson | safe }}');
+            
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: calendarEvents,
+                eventClick: function(info) {
+                    if (info.event.url) {
+                        window.location.href = info.event.url;
+                        return false;
+                    }
+                },
+                eventDidMount: function(info) {
+                    info.el.title = info.event.title;  // Add tooltip
+                }
+            });
+            calendar.render();
+        });
+    </script>
+{% endblock %}

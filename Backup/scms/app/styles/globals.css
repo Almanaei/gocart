@@ -1,0 +1,4 @@
+body[dir="rtl"] {
+  direction: rtl;
+  font-family: 'Arial', sans-serif; /* Use a font that supports Arabic characters */
+}

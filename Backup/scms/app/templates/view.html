@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    <article>
+        <h1>{{ post.title }}</h1>
+        <p>Created: {{ post.created }} by {{ post.author.username }}</p>
+        <div>{{ post.content }}</div>
+        {% if current_user.is_authenticated and current_user.id == post.author_id %}
+            <a href="{{ url_for('main.edit', id=post.id) }}" class="btn btn-primary">Edit</a>
+        {% endif %}
+    </article>
+{% endblock %}

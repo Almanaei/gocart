@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% block title %}Booking Trends{% endblock %}
+
+{% block head %}
+{{ super() }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+    .chart-container {
+        width: 80%;
+        margin: 20px auto;
+    }
+    .summary-container {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 30px;
+    }
+    .summary-item {
+        text-align: center;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .summary-value {
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+    }
+    .error-message {
+        color: red;
+        font-weight: bold;
+        text-align: center;
+        margin: 20px 0;
+    }
+    .debug-data {
+        margin-top: 30px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        white-space: pre-wrap;
+    }
+    .client-list {
+        margin-top: 30px;
+    }
+    .client-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    .generate-certificate-btn {
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Booking Trends</h1>
+    
+    {% if monthly_bookings and status_distribution and day_of_week_popularity %}
+        <div class="summary-container">
+            <div class="summary-item">
+                <h3>Total Bookings</h3>
+                <div class="summary-value">{{ monthly_bookings | sum(attribute='count') }}</div>
+            </div>
+            <div class="summary-item">
+                <h3>Most Popular Day</h3>
+                <div class="summary-value">{{ day_of_week_popularity | max(attribute='count') | attr('day') }}</div>
+            </div>
+            <div class="summary-item">
+                <h3>Most Common Status</h3>
+                <div class="summary-value">{{ status_distribution | max(attribute='count') | attr('status') }}</div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="monthlyBookingsChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="statusDistributionChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="dayOfWeekChart"></canvas>
+        </div>
+    {% else %}
+        <div class="error-message">No data available for booking trends.</div>
+    {% endif %}
+    
+    <div class="client-list">
+        <h2>Client Certificates</h2>
+        {% for client in clients %}
+            <div class="client-item">
+                <span>{{ client.name }}</span>
+                <button class="generate-certificate-btn" onclick="generateCertificate('{{ client.name }}', '{{ client.training_date }}')">Generate Certificate</button>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script id="booking-data" type="application/json">
+    {
+        "monthlyBookings": {{ monthly_bookings | tojson | safe }},
+        "statusDistribution": {{ status_distribution | tojson | safe }},
+        "dayOfWeekPopularity": {{ day_of_week_popularity | tojson | safe }}
+    }
+</script>
+
+<script>
+    const bookingData = JSON.parse(document.getElementById('booking-data').textContent);
+    const monthlyBookings = bookingData.monthlyBookings || [];
+    const statusDistribution = bookingData.statusDistribution || [];
+    const dayOfWeekPopularity = bookingData.dayOfWeekPopularity || [];
+
+    function renderCharts() {
+        // Monthly Bookings Chart
+        if (monthlyBookings.length > 0) {
+            new Chart(document.getElementById('monthlyBookingsChart').getContext('2d'), {
+                // ... existing chart configuration ...
+            });
+        }
+
+        // Status Distribution Chart
+        if (statusDistribution.length > 0) {
+            new Chart(document.getElementById('statusDistributionChart').getContext('2d'), {
+                // ... existing chart configuration ...
+            });
+        }
+
+        // Day of Week Popularity Chart
+        if (dayOfWeekPopularity.length > 0) {
+            new Chart(document.getElementById('dayOfWeekChart').getContext('2d'), {
+                // ... existing chart configuration ...
+            });
+        }
+    }
+
+    renderCharts();
+
+    function generateCertificate(clientName, trainingDate) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({
+            orientation: 'landscape',
+            unit: 'mm',
+            format: 'a4'
+        });
+
+        doc.setFontSize(40);
+        doc.text('Certificate of Completion', 150, 30, { align: 'center' });
+
+        doc.setFontSize(20);
+        doc.text(`This is to certify that`, 150, 60, { align: 'center' });
+
+        doc.setFontSize(30);
+        doc.text(clientName, 150, 80, { align: 'center' });
+
+        doc.setFontSize(20);
+        doc.text(`has successfully completed the training on`, 150, 100, { align: 'center' });
+
+        doc.setFontSize(25);
+        doc.text(trainingDate, 150, 120, { align: 'center' });
+
+        doc.save(`${clientName}_certificate.pdf`);
+    }
+</script>
+{% endblock %}

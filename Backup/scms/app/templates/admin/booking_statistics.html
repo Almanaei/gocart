@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block head %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+{% block content %}
+    <h1>Booking Statistics</h1>
+    <div class="statistics-summary">
+        <div class="statistic">
+            <h3>Total Bookings</h3>
+            <p>{{ stats.total_bookings }}</p>
+        </div>
+        <div class="statistic">
+            <h3>Done Bookings</h3>
+            <p>{{ stats.done_bookings }}</p>
+        </div>
+        <div class="statistic">
+            <h3>Pending Bookings</h3>
+            <p>{{ stats.pending_bookings }}</p>
+        </div>
+        <div class="statistic">
+            <h3>Cancelled Bookings</h3>
+            <p>{{ stats.cancelled_bookings }}</p>
+        </div>
+    </div>
+    <div class="chart-container">
+        <canvas id="bookingsChart"></canvas>
+    </div>
+    <div class="export-buttons">
+        <a href="{{ url_for('export_statistics', format='excel') }}" class="btn">Export as Excel</a>
+        <a href="{{ url_for('export_statistics', format='pdf') }}" class="btn">Export as PDF</a>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    var ctx = document.getElementById('bookingsChart').getContext('2d');
+    var chartData = JSON.parse('{{ stats.chart_data | safe }}');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: chartData.labels,
+            datasets: [{
+                label: 'Bookings per Month',
+                data: chartData.data,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

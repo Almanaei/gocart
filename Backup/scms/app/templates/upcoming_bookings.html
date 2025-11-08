@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Upcoming Trainings</h1>
+    {% if trainings %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Client Name</th>
+                    <th>Training Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for training in trainings %}
+                    <tr>
+                        <td>{{ training.client_name }}</td>
+                        <td>{{ training.training_date }}</td>
+                        <td>
+                            <span class="badge bg-{{ 'primary' if training.status == 'pending' else 'success' if training.status == 'approved' else 'secondary' }}">
+                                {{ training.status }}
+                            </span>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No upcoming trainings found.</p>
+    {% endif %}
+{% endblock %}

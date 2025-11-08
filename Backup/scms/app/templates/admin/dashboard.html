@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Admin Dashboard</h1>
+    <h2>Users</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Admin</th>
+                <th>Approved</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user[1] }}</td>
+                    <td>{% if user[3] %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if user[4] %}Yes{% else %}No{% endif %}</td>
+                    <td>
+                        {% if not user[4] %}
+                            <form method="post" action="{{ url_for('approve_user', user_id=user[0]) }}">
+                                <button type="submit">Approve</button>
+                            </form>
+                        {% endif %}
+                        <a href="{{ url_for('user_activity', user_id=user[0]) }}">View Activity</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="admin-actions">
+        <a href="{{ url_for('user_logs') }}" class="btn">View User Logs</a>
+        <a href="{{ url_for('booking_statistics') }}" class="btn">View Booking Statistics</a>
+    </div>
+    <h2>Database Backups</h2>
+    <button onclick="triggerBackup('weekly')">Create Weekly Backup</button>
+    <button onclick="triggerBackup('monthly')">Create Monthly Backup</button>
+
+    <script>
+    function triggerBackup(backupType) {
+        fetch(`/admin/create_backup/${backupType}`, {method: 'GET'})
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(`Error: ${data.error}`);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while triggering the backup.');
+            });
+    }
+    </script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>System Logs</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% if log_entries %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in log_entries %}
+                    <tr>
+                        <td>{{ entry.timestamp.strftime('%Y-%m-%d %H:%M:%S') if entry.timestamp else 'N/A' }}</td>
+                        <td>{{ entry.message }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No log entries found.</p>
+    {% endif %}
+{% endblock %}

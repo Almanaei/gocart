@@ -1,0 +1,148 @@
+2024-08-31 03:31:24,307 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:567]
+2024-08-31 03:32:35,110 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:567]
+2024-08-31 03:32:39,500 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:567]
+2024-08-31 04:05:41,119 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:474]
+2024-08-31 04:07:16,486 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:476]
+2024-08-31 04:09:53,583 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:477]
+2024-08-31 04:17:40,606 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:476]
+2024-08-31 04:17:43,686 ERROR: Exception on /favicon.ico [GET] [in C:\Python312\Lib\site-packages\flask\app.py:838]
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salem Almannai\Desktop\scms\app.py", line 480, in not_found_error
+    return render_template('404.html'), 404
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 1084, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 1013, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\jinja2\environment.py", line 972, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 404.html
+2024-08-31 04:22:28,529 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:481]
+2024-08-31 04:22:29,456 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:481]
+2024-08-31 04:22:34,224 ERROR: An error occurred: no such table: posts [in C:\Users\Salem Almannai\Desktop\scms\app.py:402]
+2024-08-31 04:22:34,272 ERROR: Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask_caching\__init__.py", line 426, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask_caching\__init__.py", line 185, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Salem Almannai\Desktop\scms\app.py", line 109, in index
+    total_posts = db.execute('SELECT COUNT(*) FROM posts').fetchone()[0]
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: posts
+ [in C:\Users\Salem Almannai\Desktop\scms\app.py:403]
+2024-08-31 04:31:50,354 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:498]
+2024-08-31 04:31:51,588 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:498]
+2024-08-31 04:31:59,923 ERROR: An error occurred: 400 Bad Request: The CSRF token is missing. [in C:\Users\Salem Almannai\Desktop\scms\app.py:419]
+2024-08-31 04:32:00,096 ERROR: Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\flask_wtf\csrf.py", line 261, in protect
+    validate_csrf(self._get_csrf_token())
+  File "C:\Python312\Lib\site-packages\flask_wtf\csrf.py", line 100, in validate_csrf
+    raise ValidationError("The CSRF token is missing.")
+wtforms.validators.ValidationError: The CSRF token is missing.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 878, in full_dispatch_request
+    rv = self.preprocess_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 1253, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask_wtf\csrf.py", line 229, in csrf_protect
+    self.protect()
+  File "C:\Python312\Lib\site-packages\flask_wtf\csrf.py", line 264, in protect
+    self._error_response(e.args[0])
+  File "C:\Python312\Lib\site-packages\flask_wtf\csrf.py", line 307, in _error_response
+    raise CSRFError(reason)
+flask_wtf.csrf.CSRFError: 400 Bad Request: The CSRF token is missing.
+ [in C:\Users\Salem Almannai\Desktop\scms\app.py:420]
+2024-08-31 04:34:44,849 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:507]
+2024-08-31 04:34:50,262 ERROR: An error occurred: 400 Bad Request: The CSRF token is missing. [in C:\Users\Salem Almannai\Desktop\scms\app.py:428]
+2024-08-31 04:34:50,265 ERROR: Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\flask_wtf\csrf.py", line 261, in protect
+    validate_csrf(self._get_csrf_token())
+  File "C:\Python312\Lib\site-packages\flask_wtf\csrf.py", line 100, in validate_csrf
+    raise ValidationError("The CSRF token is missing.")
+wtforms.validators.ValidationError: The CSRF token is missing.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 878, in full_dispatch_request
+    rv = self.preprocess_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 1253, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask_wtf\csrf.py", line 229, in csrf_protect
+    self.protect()
+  File "C:\Python312\Lib\site-packages\flask_wtf\csrf.py", line 264, in protect
+    self._error_response(e.args[0])
+  File "C:\Python312\Lib\site-packages\flask_wtf\csrf.py", line 307, in _error_response
+    raise CSRFError(reason)
+flask_wtf.csrf.CSRFError: 400 Bad Request: The CSRF token is missing.
+ [in C:\Users\Salem Almannai\Desktop\scms\app.py:429]
+2024-08-31 04:34:52,714 ERROR: An error occurred: 400 Bad Request: The CSRF token is missing. [in C:\Users\Salem Almannai\Desktop\scms\app.py:428]
+2024-08-31 04:35:47,764 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:507]
+2024-08-31 04:35:48,571 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:507]
+2024-08-31 04:37:35,431 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:508]
+2024-08-31 04:46:11,465 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:508]
+2024-08-31 04:46:12,931 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:508]
+2024-08-31 04:48:21,115 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:507]
+2024-08-31 04:48:22,209 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:507]
+2024-08-31 04:48:44,529 ERROR: An error occurred: 400 Bad Request: The CSRF token is missing. [in C:\Users\Salem Almannai\Desktop\scms\app.py:428]
+2024-08-31 04:49:06,721 ERROR: An error occurred: 400 Bad Request: The CSRF token is missing. [in C:\Users\Salem Almannai\Desktop\scms\app.py:428]
+2024-08-31 04:49:24,373 INFO: App startup [in C:\Users\Salem Almannai\Desktop\scms\app.py:518]

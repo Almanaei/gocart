@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Upcoming Auto Bookings</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Client Name</th>
+                <th>Last Booking</th>
+                <th>Next Auto Booking</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking['client_name'] }}</td>
+                    <td>{{ booking['last_booking'] }}</td>
+                    <td>{{ booking['next_booking'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
